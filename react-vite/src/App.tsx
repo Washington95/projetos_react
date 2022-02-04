@@ -1,12 +1,8 @@
-// function App(){
-//   return <h1>Olá mundo</h1>
-// }
+import React from "react";
 
 const App = () =>{
   return(
-    <div>
-      Opa,tudo bem?
-    </div>
+    <a href="https://b7web.com.br">Clique aqui</a>
   )
 }
 
