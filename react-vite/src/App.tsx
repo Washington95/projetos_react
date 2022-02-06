@@ -1,24 +1,20 @@
-import { useState } from "react"
+import React, { useState } from "react"
 
 const App = () =>{
 
-  const [n, troca] = useState(0);
+  const [name, troca] = useState('');
 
-
-  const menos = () =>{
-    troca(n - 1);
+  const pegar = (e: React.ChangeEvent<HTMLInputElement>) =>{
+    troca(e?.target.value)
   }
 
-  const mais = () =>{
-    troca(n + 1)
-  }
 
   return(
     <div>
-     <button onClick={menos}>-</button>
-     <div>{n}</div>
-     <button onClick={mais}>+</button>
-
+     nome:
+     <input type="text" value={name} onChange={pegar} />
+     <hr />
+     seu nome é: {name}
     </div>
     
   )
