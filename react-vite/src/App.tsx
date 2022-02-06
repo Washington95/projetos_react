@@ -1,17 +1,25 @@
-import { Botao } from "./components/Botao";
+import { Pessoa } from "./components/Pessoa";
+
+
 const App = () =>{
-  let txto = 'Clique Aqui'
-
-  const botaoE = (txt: string) =>{
-    alert("frase app:"+ txt);
-  }
-
+  let list = [
+    {name: 'Washington', age: 27},
+    {name: 'Luiz', age: 77},
+    {name: 'Moreira', age: 47},
+    {name: 'Ozório', age: 37}
+    
+  ];
+  
   return(
     <div>
-      <Botao text={txto} clickfn={botaoE}/>
+      <h2>Lista de presença</h2>
+      <ul>
+        {list.map(( item, index) =>(
+          <Pessoa key={index} data={item}/>
+        ))}
+      </ul>
     </div>
-    
-    
-  )
+      
+  );
 }
 export default App;
