@@ -1,20 +1,16 @@
 import { useState } from "react";
-
+import { Botao } from "./components/Botao";
 const App = () =>{
-  const[color, setcolor] = useState('green')
 
-  const clicou = () =>{
-    setcolor('yellow')
+  const [cor, mcor] = useState ('yellow')
+
+  const clicou = () => {
+    mcor('white')
   }
-
 
   return(
     <div>
-       <button onClick={clicou} style={{
-         backgroundColor: 'black',
-         color ,
-         padding: 0
-       }}>Clique Aqui</button>
+       <Botao />
     </div>
       
   );
