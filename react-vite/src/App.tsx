@@ -1,14 +1,20 @@
+import { useState } from "react";
 
 const App = () =>{
+  const[color, setcolor] = useState('green')
+
+  const clicou = () =>{
+    setcolor('yellow')
+  }
+
 
   return(
     <div>
-      <button style={{
-        backgroundColor: 'red',
-        color: 'white',
-        borderRadius:'5px'
-      }}>Clique aqui</button>
-
+       <button onClick={clicou} style={{
+         backgroundColor: 'black',
+         color ,
+         padding: 0
+       }}>Clique Aqui</button>
     </div>
       
   );
