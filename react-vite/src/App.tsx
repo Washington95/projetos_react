@@ -4,9 +4,10 @@ import * as C from './AppStyles'
 const App = () =>{
 
   return(
-    <C.Container>
-      Texto Qualquer
-      <C.Bota>Clique aqui</C.Bota>
+    <C.Container bgColor="orange">
+      Texto Qualqueraa
+     <C.Botao bg="red" >Grande</C.Botao>
+     <C.Botao bg="yellow" small>Pequeno</C.Botao>
     </C.Container>
 
       

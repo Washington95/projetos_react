@@ -1,13 +1,22 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
-    background-color: blue;
-    color: white;
+type ConProps = {
+    bgColor: string;
+}
+
+export const Container = styled.div<ConProps>`
+    background-color: ${props => props.bgColor};
+    color: white ;
     padding: 20px;
 
 `
+type BotaoProps = {
+    bg: string;
+    small?: boolean;
+}
 
-export const Bota = styled.button`
-    font-size: 25px
+export const Botao = styled.button<BotaoProps> `
+    font-size: ${props => props.small ? '15px' : '30px'};
+    background-color: ${props => props.bg};
 
 `
