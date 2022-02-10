@@ -5,9 +5,12 @@ type ConProps = {
 }
 
 export const Container = styled.div<ConProps>`
+    max-width: 600px;
+    margin: auto;
     background-color: ${props => props.bgColor};
     color: white ;
     padding: 20px;
+    display: flex;
 
     span{
         color: yellow;
@@ -20,6 +23,11 @@ export const Container = styled.div<ConProps>`
         &:hover{
             color:blue
         }
+    }
+
+    @media (max-width: 500px){
+        background-color: green;
+        flex-direction: column;
     }
 
 `

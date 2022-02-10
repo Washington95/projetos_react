@@ -4,7 +4,7 @@ import * as C from './AppStyles'
 const App = () =>{
 
   return(
-    <C.Container bgColor="orange">
+    <C.Container bgColor="blue">
       <span>Texto Qualqueraa</span> 
 
       <a href="#" className='link' >Link</a>
