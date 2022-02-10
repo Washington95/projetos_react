@@ -9,6 +9,19 @@ export const Container = styled.div<ConProps>`
     color: white ;
     padding: 20px;
 
+    span{
+        color: yellow;
+        font-weight: bold;
+    }
+
+    .link{
+        color: red;
+
+        &:hover{
+            color:blue
+        }
+    }
+
 `
 type BotaoProps = {
     bg: string;
