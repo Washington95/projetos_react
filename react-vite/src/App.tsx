@@ -1,11 +1,23 @@
+import { useEffect, useState } from "react";
+
+
 const App = () =>{
+  const [name, set] = useState('Luiz');
+
+  useEffect(() =>{
+    alert('mudou');
+  }, [name]);
+
+  const mudar = () =>{
+    set('Bom')
+  }
 
   return(
-    <div className="bg-slate-500 text-orange-900 p-3 font-bold flex flex-col text-center md:flex-row md:justify-between">
-      Texto qualquer
+    <div>
+      nome: {name} <br />
+      <button onClick={mudar}>Clique Aqui </button>
+     
 
-
-      <button className="bg-green-800 text-black p-2 rounded-xl mt-3 md:ml-3 md:mt-0 md:text-2xl " >Clique aqui</button>
     </div>
     
 
