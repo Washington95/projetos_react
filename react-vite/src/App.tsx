@@ -1,26 +1,31 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, useEffect, useState } from "react";
 
 
 const App = () =>{
-  const [name, set] = useState('Luiz');
+  const [name, set] = useState('');
+  const [sname, sets] = useState ('');
+  const [namec, setc] = useState ('');
 
-  useEffect(() =>{
-    alert('mudou');
-  }, [name]);
+  useEffect(()=>{
+    setc(`${name} ${sname}`)
+  }, [name, sname])
 
-  const mudar = () =>{
-    set('Bom')
+  const mname = (e: ChangeEvent<HTMLInputElement>) =>{
+    set(e.target.value)
+
+  } 
+
+  const msname = (e: ChangeEvent<HTMLInputElement>) =>{
+    sets(e.target.value)
   }
 
   return(
     <div>
-      nome: {name} <br />
-      <button onClick={mudar}>Clique Aqui </button>
-     
+      <input type="text" placeholder="Digite seu Nome" value={name} onChange={mname} /> <br />
+      <input type="text" placeholder="Digite seu Sobrenome" value={sname} onChange={msname} />
+      <p>Nome Completo: {namec}</p>
 
     </div>
-    
-
       
   );
 }
