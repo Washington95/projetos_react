@@ -5,16 +5,24 @@ import { Movie } from "./types/Movie";
 const App = () =>{
   const [movies, setmovies] = useState<Movie[]>([]);
  
-  const carregar = () =>{
-    fetch('https://api.b7web.com.br/cinema/')
-      .then((response) =>{
-        return response.json();
-      })
-      .then((json)=>{
-        setmovies(json);
-      });
+  // const carregar = () =>{
+  //   fetch('https://api.b7web.com.br/cinema/')
+  //     .then((response) =>{
+  //       return response.json();
+  //     })
+  //     .then((json)=>{
+  //       setmovies(json);
+  //     });
+      
+  // }
+
+  const carregar =  async () =>{
+    let response = await  fetch('https://api.b7web.com.br/cinema/');
+    let json  = await response.json();
+    setmovies(json);
       
   }
+
 
   return(
     <div>
