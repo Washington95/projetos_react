@@ -4,25 +4,24 @@ import { Movie } from "./types/Movie";
 
 const App = () =>{
   const [movies, setmovies] = useState<Movie[]>([]);
-  const [loading, setloading] = useState(false)
+  const [loading, setloading] = useState(false);
  
-  // const carregar = () =>{
-  //   fetch('https://api.b7web.com.br/cinema/')
-  //     .then((response) =>{
-  //       return response.json();
-  //     })
-  //     .then((json)=>{
-  //       setmovies(json);
-  //     });
-      
-  // }
 
   const carregar =  async () =>{
-    setloading(true);
-    let response = await  fetch('https://api.b7web.com.br/cinema/');
-    let json  = await response.json();
-    setloading(false);
-    setmovies(json);
+    try{
+      setloading(true);
+      let response = await  fetch('https://api.b7web.com.br/cinema/');
+      let json  = await response.json();
+      setloading(false);
+      setmovies(json);
+    } catch(e){
+      setloading(false);
+      alert('erro')
+      setmovies([]);
+      console.error(e)
+
+    }
+    
       
   }
 
@@ -34,7 +33,7 @@ const App = () =>{
           Carregando...
         </div>
       }
-      {!loading &&
+      {!loading && 
         <>
         <div className="grid justify-items-center">
           <button className="block bg-blue-400 p-2 rounded " onClick={carregar}>Carregar Filmes</button> <br />
