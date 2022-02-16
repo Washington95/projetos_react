@@ -1,10 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import { Post } from "./types/Post";
 
 
 const App = () =>{
   const [posts, setposts] = useState<Post[]>([]);
   const [loading, setloading] = useState(false);
+
+  const[title, settitle] = useState ('');
+  const[body, setbody] = useState('')
 
   useEffect(() => {
     carregar()
@@ -25,6 +28,18 @@ const App = () =>{
 
     }
   }
+
+  const addtitle = (e: ChangeEvent<HTMLInputElement> ) =>{
+    settitle(e.target.value)
+  }
+
+  const addbody = (e: ChangeEvent<HTMLTextAreaElement>) =>{
+    setbody(e.target.value)
+  }
+
+  const postar = () =>{
+    alert(`${title} - ${body}`)
+  }
  
 
 
@@ -35,6 +50,16 @@ const App = () =>{
           Carregando...
         </div>
       }
+
+      <fieldset className="border-2 mb-3 p-3">
+        <legend>Adicionar Novo Post</legend>
+        <input value={title} onChange={addtitle} className="block border mb-2" type="text" placeholder="Digite um Titulo" />
+        <textarea value={body} onChange={addbody} className="block border mb-2" ></textarea>
+        <button className="block border" onClick={postar}>Adicionar</button>
+
+      </fieldset>
+
+
       {!loading && posts.length > 0 &&
         <>
         
