@@ -1,29 +1,31 @@
-import { useState } from "react";
-import { Movie } from "./types/Movie";
+import { useState, useEffect } from "react";
+import { Post } from "./types/Post";
 
 
 const App = () =>{
-  const [movies, setmovies] = useState<Movie[]>([]);
+  const [posts, setposts] = useState<Post[]>([]);
   const [loading, setloading] = useState(false);
- 
+
+  useEffect(() => {
+    carregar()
+  }, [])
 
   const carregar =  async () =>{
     try{
       setloading(true);
-      let response = await  fetch('https://api.b7web.com.br/cinema/');
+      let response = await  fetch('https://jsonplaceholder.typicode.com/posts');
       let json  = await response.json();
       setloading(false);
-      setmovies(json);
+      setposts(json);
     } catch(e){
       setloading(false);
       alert('erro')
-      setmovies([]);
+      setposts([]);
       console.error(e)
 
     }
-    
-      
   }
+ 
 
 
   return(
@@ -33,19 +35,17 @@ const App = () =>{
           Carregando...
         </div>
       }
-      {!loading && 
+      {!loading && posts.length > 0 &&
         <>
-        <div className="grid justify-items-center">
-          <button className="block bg-blue-400 p-2 rounded " onClick={carregar}>Carregar Filmes</button> <br />
-        </div>
-          
-
-        <p className="text-center mb-2">Total de filmes : {movies.length} </p> 
-        <div className="grid grid-cols-4 gap-3 ml-3">
-          {movies.map((item, index) => (
-            <div key={index}>
-              <img src={item.avatar} className="w-28 block " alt="Capa" />
-              {item.titulo}
+        
+        <p className="text-center mb-2">Total de Posts : {posts.length} </p> 
+        <div >
+          {posts.map((item, index) => (
+            <div key={index} className="my-5 ml-5">
+              <h4 className="font-bold">{item.title}</h4>
+              <small>#{item.id} - Usuário: {item.userId}</small>
+              <p>{item.body}</p>
+              
             </div>
           ))}
         </div>
