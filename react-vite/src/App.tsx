@@ -37,8 +37,32 @@ const App = () =>{
     setbody(e.target.value)
   }
 
-  const postar = () =>{
-    alert(`${title} - ${body}`)
+  const postar = async () =>{
+    if(title && body) {
+
+      let response = await fetch('https://jsonplaceholder.typicode.com/posts',{
+        method: 'POST',
+        body: JSON.stringify({
+          title: title,
+          body: body,
+          userId: 1
+        }),
+        headers :{
+          'Content-Type': 'application/json'
+        }
+      });
+      let json = await response.json();
+
+      if(json.id){
+        alert("Post adicionado com sucesso")
+
+      }else{
+        alert("Ocorreu um erro")
+      }
+
+    }else{
+      alert("preencha todos os dados")
+    }
   }
  
 
