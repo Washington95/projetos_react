@@ -1,4 +1,6 @@
 import { useState, useEffect, ChangeEvent } from "react";
+import { PostForm } from "./components/PostForm";
+import { PostItem } from "./components/PostItem";
 import { Post } from "./types/Post";
 
 
@@ -6,8 +8,7 @@ const App = () =>{
   const [posts, setposts] = useState<Post[]>([]);
   const [loading, setloading] = useState(false);
 
-  const[title, settitle] = useState ('');
-  const[body, setbody] = useState('')
+  
 
   useEffect(() => {
     carregar()
@@ -29,27 +30,12 @@ const App = () =>{
     }
   }
 
-  const addtitle = (e: ChangeEvent<HTMLInputElement> ) =>{
-    settitle(e.target.value)
-  }
 
-  const addbody = (e: ChangeEvent<HTMLTextAreaElement>) =>{
-    setbody(e.target.value)
-  }
-
-  const postar = async () =>{
-    if(title && body) {
-
-      let response = await fetch('https://jsonplaceholder.typicode.com/posts',{
+  const criar = async (title: string, body: string) =>{
+    let response = await fetch('https://jsonplaceholder.typicode.com/posts',{
         method: 'POST',
-        body: JSON.stringify({
-          title: title,
-          body: body,
-          userId: 1
-        }),
-        headers :{
-          'Content-Type': 'application/json'
-        }
+        body: JSON.stringify({title, body, userId: 1}),
+        headers :{'Content-Type': 'application/json'}
       });
       let json = await response.json();
 
@@ -60,11 +46,7 @@ const App = () =>{
         alert("Ocorreu um erro")
       }
 
-    }else{
-      alert("preencha todos os dados")
-    }
   }
- 
 
 
   return(
@@ -75,14 +57,7 @@ const App = () =>{
         </div>
       }
 
-      <fieldset className="border-2 mb-3 p-3">
-        <legend>Adicionar Novo Post</legend>
-        <input value={title} onChange={addtitle} className="block border mb-2" type="text" placeholder="Digite um Titulo" />
-        <textarea value={body} onChange={addbody} className="block border mb-2" ></textarea>
-        <button className="block border" onClick={postar}>Adicionar</button>
-
-      </fieldset>
-
+      <PostForm onAdd={criar} />
 
       {!loading && posts.length > 0 &&
         <>
@@ -90,12 +65,8 @@ const App = () =>{
         <p className="text-center mb-2">Total de Posts : {posts.length} </p> 
         <div >
           {posts.map((item, index) => (
-            <div key={index} className="my-5 ml-5">
-              <h4 className="font-bold">{item.title}</h4>
-              <small>#{item.id} - Usuário: {item.userId}</small>
-              <p>{item.body}</p>
-              
-            </div>
+            <PostItem data={item} />
+            
           ))}
         </div>
         </>
