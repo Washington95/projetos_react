@@ -1,65 +1,41 @@
-import { useState, useEffect, } from "react";
-import { api } from "./api";
-import { PostForm } from "./components/PostForm";
-import { PostItem } from "./components/PostItem";
-import { Post } from "./types/Post";
+import { useReducer } from "react";
+
+type reducerState ={
+  c: number
+}
+
+type reducerAction = {
+  type: string;
+}
 
 
 
-const App = () =>{
-  const [posts, setposts] = useState<Post[]>([]);
-  const [loading, setloading] = useState(false);
+const initial = { c :0};
 
-  
-
-  useEffect(() => {
-    carregar()
-  }, [])
-
-  const carregar =  async () =>{
-    setloading(true);
-    let json = await api.getPost();
-    setloading(false);
-    setposts(json)
+const reducer =(state: reducerState, action: reducerAction) => {
+  switch(action.type) {
+    case 'ADD':
+      return {...state, c: state.c + 1}
+    break;
+    case 'DEL':
+      return {...state, c: state.c - 1}
+    break;
+    case 'RESET':
+      return initial;
+    break;
   }
 
-
-  const criar = async (title: string, body: string) =>{
-    let json = await api.addPost(title, body, 1);
-    if(json.id){
-      alert("Post adicinado com sucesso");
-
-    }else {
-      alert("Ocorreu um erro")
-    }
-
-  }
+  return state;
+}
 
 
+const App = () => {
+  const [state, dispatch] = useReducer (reducer, initial);
   return(
-    <div>
-      {loading &&
-        <div>
-          Carregando...
-        </div>
-      }
-
-      <PostForm onAdd={criar} />
-
-      {!loading && posts.length > 0 &&
-        <>
-        
-        <p className="text-center mb-2">Total de Posts : {posts.length} </p> 
-        <div >
-          {posts.map((item, index) => (
-            <PostItem data={item} />
-            
-          ))}
-        </div>
-        </>
-      }
-    </div>
+    <div className="p-5">
       
+    </div>
   );
 }
+
 export default App;
