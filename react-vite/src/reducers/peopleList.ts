@@ -17,21 +17,21 @@ type Atype = {
 
 const initial: Person[] = [];
 
-const reducer = (state: Person [], action:Atype) =>{
+const reducer = (state: Person[], action:Atype) =>{
     switch(action.type) {
         case 'ADD':
             if(action.payload?.name){
-                state.push({
+                const newState = [...state];
+                newState.push({
                     id: uuidv4(),
-                    name: action.payload.name
+                    name: action.payload?.name
                 });
+                return newState;
             }
-
         break;
         case 'DEL':
             if(action.payload?.id){
                 state = state.filter( item => item.id !== action.payload?.id);
-
             }
             
         break;
@@ -44,5 +44,5 @@ const reducer = (state: Person [], action:Atype) =>{
 }
 
 export const usePeopleList = () => {
-    
+    return useReducer(reducer, initial)
 }
