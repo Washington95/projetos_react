@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { AboutW } from "./pages/AboutW";
 import { AboutL } from "./pages/AboutL";
+import { NotFound } from "./pages/NotFound";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
           <Route path="/sobre" element={<About/>} />
           <Route path="/sobre/w" element={<AboutW/>} />
           <Route path="/sobre/l" element={<AboutL/>} />
+          <Route path="*" element={<NotFound/>}/>
         </Routes>
 
 
