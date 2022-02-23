@@ -1,6 +1,8 @@
 import { Routes, Route } from "react-router-dom";
 import { Home } from "./pages/Home";
 import { About } from "./pages/About";
+import { AboutW } from "./pages/AboutW";
+import { AboutL } from "./pages/AboutL";
 
 const App = () => {
   return (
@@ -13,6 +15,8 @@ const App = () => {
         <Routes>
           <Route path="/" element={<Home/>} />
           <Route path="/sobre" element={<About/>} />
+          <Route path="/sobre/w" element={<AboutW/>} />
+          <Route path="/sobre/l" element={<AboutL/>} />
         </Routes>
 
 
