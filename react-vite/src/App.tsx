@@ -3,6 +3,7 @@ import { Home } from "./pages/Home";
 import { About } from "./pages/About";
 import { AboutItem } from "./pages/AboutItem";
 import { NotFound } from "./pages/NotFound";
+import { ReAuth } from "./ReAuth";
 
 const App = () => {
   return (
@@ -14,7 +15,7 @@ const App = () => {
       <div className="py-4">
         <Routes>
           <Route path="/" element={<Home/>} />
-          <Route path="/sobre" element={<About/>} />
+          <Route path="/sobre" element={<ReAuth><About/></ReAuth>} />
           <Route path="/sobre/:slug" element={<AboutItem/>}/>
           <Route path="*" element={<NotFound/>}/>
         </Routes>
