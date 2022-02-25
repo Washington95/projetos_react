@@ -8,7 +8,7 @@ export const About = () => {
                 
                 <hr />
             </ul>
-            <Link to="/">Inicio</Link>
+            
         </div>
     )
 }
