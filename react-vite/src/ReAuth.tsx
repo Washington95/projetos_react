@@ -6,7 +6,7 @@ type Props = {
 }
 
 export const ReAuth = ( {children} : Props ) => {
-    const  Aut = false;
+    const  Aut = true;
 
     if(!Aut){
         return <Navigate to={"/login"} />

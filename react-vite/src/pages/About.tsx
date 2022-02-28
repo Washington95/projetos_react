@@ -18,6 +18,9 @@ export const About = () => {
             Página Sobre: 
             <ul>
                 <li><Link to="/sobre/w"> W </Link></li>
+                <li><Link to="/sobre/luiz"> Luiz </Link></li>
+                <li><Link to="/sobre/moreira"> Moreira </Link></li>
+                <li><Link to="/sobre/ozrio"> Ozorio </Link></li>
                 <hr />
             </ul>
             
