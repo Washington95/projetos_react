@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import styles from './App.module.css';
+import poweredImage from './assets/powered.png';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Washington
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+const App = () =>{
+  return(
+    <div className={styles.main}>
+      <header>
+        <div className={styles.headerContainer}>
+          <img src={poweredImage} alt="" width={150} />
+        </div>
       </header>
+      <div className={styles.container}>
+        <div className={styles.leftS}>
+          ...
+        </div>
+        <div className={styles.rightS}>
+          ...
+        </div>
+      </div>
     </div>
-  );
+  )
 }
 
 export default App;
