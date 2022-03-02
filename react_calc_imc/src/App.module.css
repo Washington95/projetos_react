@@ -1,6 +1,8 @@
-* {box-sizing: border-box;}
+* {
+    box-sizing: border-box;
+}
 
-body{
+body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
@@ -9,20 +11,61 @@ body{
     margin: 40px auto;
 }
 
-.container{
+.container {
     display: flex;
     max-width: 900px;
     margin: auto;
 }
 
-.leftS{
+.leftS {
     flex: 1;
     margin-right: 40px;
-    
+
 }
 
-.rightS{
+.leftS h1 {
+    margin: 0;
+    font-size: 40px;
+    color: #3A4B5C;
+}
+
+.leftS p {
+    font-size: 16px;
+    margin-bottom: 40px;
+    color: #6A7D8B;
+}
+
+.leftS input {
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid rgba(150, 163, 171, .5);
+    padding: 10px 20px;
+    margin-bottom: 20px;
+    outline: 0;
+}
+
+.leftS button {
+    background-color: #227C9D;
+    color: #FFF;
+    font-size: 15px;
+    border: 0;
+    border-radius: 10px;
+    padding: 15px 0;
+    width: 100%;
+    cursor: pointer;
+    margin-top: 40px;
+    transition: all ease 0.3s;
+
+}
+
+.leftS button:hover {
+    opacity: .8;
+
+}
+
+
+.rightS {
     flex: 1;
     margin-left: 40px;
-    
+
 }
