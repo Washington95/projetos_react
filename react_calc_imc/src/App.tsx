@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import styles from './App.module.css';
 import poweredImage from './assets/powered.png';
+import arrowImage from './assets/leftarrow.png'
 import { GridItem } from './components/GridItem';
 import { levels, calculateImc, Level } from './helpers/imc';
 
@@ -17,6 +18,13 @@ const App = () =>{
     }else{
       alert("preencha todos os campos")
     }
+  }
+
+
+  const back = () => {
+    setToShow(null);
+    newalt(0);
+    newpes(0);
   }
 
   return(
@@ -56,7 +64,10 @@ const App = () =>{
           }
           {toShow &&
             <div className={styles.rightBig}>
-              <div className={styles.rightArrow}></div>
+              <div className={styles.rightArrow} onClick={back}>
+                <img src={arrowImage} alt="" width={25} />
+
+              </div>
               <GridItem item={toShow} />
             </div>
           }
