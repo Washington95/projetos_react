@@ -44,14 +44,16 @@ const App = () =>{
             placeholder= "Digite a sua altura Ex: 1.5 (em métros) "
             value={alt > 0 ? alt : ''}
             onChange={e => newalt(parseFloat(e.target.value))}
+            disabled={toShow ? true: false}
           />
           <input 
             type="number"
             placeholder='Digite seu peso Ex:75 (em kg)'
             value={pes > 0 ? pes : ''}
             onChange={e => newpes(parseFloat(e.target.value))}
+            disabled={toShow ? true: false}
           />
-          <button onClick={calcular}>Calcluar</button>
+          <button onClick={calcular} disabled={toShow ? true: false}>Calcluar</button>
 
         </div>
         <div className={styles.rightS}>

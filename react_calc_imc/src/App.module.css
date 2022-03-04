@@ -44,6 +44,10 @@ body {
     outline: 0;
 }
 
+.leftS input:disabled{
+    opacity: .8;
+}
+
 .leftS button {
     background-color: #227C9D;
     color: #FFF;
@@ -61,6 +65,10 @@ body {
 .leftS button:hover {
     opacity: .8;
 
+}
+
+.leftS button:disabled{
+    opacity: .8;
 }
 
 
