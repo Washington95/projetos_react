@@ -2,14 +2,16 @@ import { useState } from 'react';
 import styles from './App.module.css';
 import poweredImage from './assets/powered.png';
 import { GridItem } from './components/GridItem';
-import { levels, calculateImc } from './helpers/imc';
+import { levels, calculateImc, Level } from './helpers/imc';
 
 const App = () =>{
   const [alt, newalt] = useState<number>(0)
   const [pes, newpes] = useState<number>(0)
+  const [toShow, setToShow] = useState<Level | null>(null)
 
   const calcular = () => {
     if(alt && pes){
+      setToShow(calculateImc(alt, pes));
       
 
     }else{
@@ -45,12 +47,22 @@ const App = () =>{
 
         </div>
         <div className={styles.rightS}>
-          <div className={styles.grid}>
-            {levels.map((item, key) =>(
-              <GridItem key={key} item={item}/>
-            ))}
-          </div>
+          {!toShow &&
+            <div className={styles.grid}>
+              {levels.map((item, key) =>(
+                <GridItem key={key} item={item}/>
+              ))}
+            </div>
+          }
+          {toShow &&
+            <div className={styles.rightBig}>
+              <div className={styles.rightArrow}></div>
+              <GridItem item={toShow} />
+            </div>
+          }
+
         </div>
+
       </div>
     </div>
   )
