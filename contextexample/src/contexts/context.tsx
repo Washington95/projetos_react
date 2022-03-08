@@ -1,20 +1,34 @@
-import { createContext } from "react";
+import { createContext, useReducer} from "react";
+import { UserType, userReducer, userI } from "../reducers/userReducer";
+import { reducerActionType } from "../types/reducerActionTypes";
+
+type userIniType = {
+    user: UserType;
+}
 
 type ContextType = {
-    name: string;
-    age: number;
+    state: userIniType;
+    dispatch: React.Dispatch<any>
 }
 
-const Is = {
-    name: 'Luiz',
-    age: 25
+const userIni = {
+    user: userI
 }
 
-export const Context = createContext<ContextType>(Is);
+export const Context = createContext<ContextType>({
+    state: userIni,
+    dispatch: () => null
+});
 
-export const ContextProvider: React.FC = ({children}) =>{
+const mainReducer = (state: userIniType, action: reducerActionType) =>({
+    user: userReducer(state.user, action)
+})
+
+export const ContextProvider: React.FC = ({ children }) => {
+    const [state, dispatch] = useReducer(mainReducer,userIni)
+
     return(
-        <Context.Provider value={Is}>
+        <Context.Provider value={{state, dispatch}}>
             {children}
         </Context.Provider>
     )

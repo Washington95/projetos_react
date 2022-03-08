@@ -3,11 +3,11 @@ import { useContext } from "react"
 import { Context } from "../contexts/context"
 
 export const ShowData = () => {
-    const {name} = useContext(Context)
+    const {state, dispatch} = useContext(Context)
 
     return(
         <div>
-            Tela ShowData {name}
+            Tela ShowData {state.user.name}
             <br />
             <Link to="/">Ir para SingUp</Link>
         </div>
