@@ -6,18 +6,18 @@ export type UserType = {
 }
 
 export const userI : UserType = {
-    name: 'Washington',
-    age: 26
+    name: '',
+    age: 0
 }
 
 export const userReducer = (state: UserType, action: reducerActionType) => {
     switch(action.type) {
         case 'CHANGE_NAME':
             return {...state, name: action.payload.name};
-        break;
-        case 'AGE_NAME':
+        
+        case 'CHANGE_AGE':
             return {...state, age: action.payload.age};
-        break;
+        
     }
 
     return state;
