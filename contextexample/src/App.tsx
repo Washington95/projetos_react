@@ -2,20 +2,47 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { SingUp } from "./pages/SingUp";
 import { ShowData } from "./pages/ShowData";
 
-import { ContextProvider } from "./contexts/context";
+import { Context } from "./contexts/context";
+import { useContext } from "react";
 
 const App = () => {
+
+  const {state, dispatch} = useContext(Context);
+
+  const trocatheme = () => {
+    if(state.theme.status === 'light'){
+      dispatch({
+        type: 'CHANGE_STATUS',
+        payload: {
+          status: 'dark'
+        }
+      })
+    } else {
+      dispatch({
+        type: 'CHANGE_STATUS',
+        payload: {
+          status: 'light'
+        }
+      })
+    }
+  }
+
   return(
-    <ContextProvider>
-      <BrowserRouter>
-        <h1>Titulo da Página</h1>
-        <hr />
-        <Routes>
-          <Route path="/" element={<SingUp/>}/>
-          <Route path="/exibir" element={<ShowData/>}/>
-        </Routes>
-      </BrowserRouter>
-    </ContextProvider>
+    <BrowserRouter>
+      <div style={{
+        backgroundColor: state.theme.status === 'light' ? '#FFF': '#000',
+        color: state.theme.status === 'light' ? '#000' : "#FFF",
+        }}>
+          <h1>Titulo da Página</h1>
+          Tema: {state.theme.status}
+          <button onClick={trocatheme}>Theme</button>
+          <hr />
+          <Routes>
+            <Route path="/" element={<SingUp/>}/>
+            <Route path="/exibir" element={<ShowData/>}/>
+          </Routes>
+      </div>
+    </BrowserRouter>
   )
 }
 

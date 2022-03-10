@@ -27,7 +27,7 @@ export const SingUp = () => {
 
     return(
         <div>
-            <h3>Página de Cadastro </h3>
+            <h3>Página de Cadastro Tema: {state.theme.status} </h3> 
             <input type="text" placeholder="Digite um nome" value={state.user.name} onChange={novon} />
             <input type="text" placeholder="Digite uma idade" value={state.user.age} onChange={novai} />
            
